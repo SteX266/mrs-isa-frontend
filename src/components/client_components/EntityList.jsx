@@ -77,7 +77,7 @@ function EntityList(props) {
     };
 
     let res = await axios.post(
-      "http://localhost:8080/auth/getFilteredEntities",
+      "https://mrs-isa-backend.herokuapp.com/auth/getFilteredEntities",
       {
         rentalFeeFrom: currentFilters.rentalFeeFrom,
         rentalFeeTo: currentFilters.rentalFeeTo,
@@ -100,7 +100,7 @@ function EntityList(props) {
     console.log(res.data);
 
     let size = await axios.post(
-      "http://localhost:8080/auth/getFilteredEntitiesTotalNumber",
+      "https://mrs-isa-backend.herokuapp.com/auth/getFilteredEntitiesTotalNumber",
       {
         rentalFeeFrom: currentFilters.rentalFeeFrom,
         rentalFeeTo: currentFilters.rentalFeeTo,
