@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import BigCalendar from "./BigCalendar";
 import ReservationDialog from "./modals/ReservationDialog";
 import toast from "react-hot-toast";
+import ServerName from "../ServerName";
 
 function ClientCalendar() {
   const params = useParams();
@@ -38,7 +39,7 @@ function ClientCalendar() {
 
     axios
       .post(
-        "http://localhost:8080/reservation/makeReservation",
+        `${ServerName}reservation/makeReservation`,
         { dateFrom: startDate, dateTo: endDate, entityId: params.id },
         { headers }
       )
@@ -69,7 +70,7 @@ function ClientCalendar() {
 
     await axios
       .get(
-        "http://localhost:8080/reservation/getEntityReservations",
+        `${ServerName}reservation/getEntityReservations`,
         requestOptions
       )
       .then((res) => {
@@ -104,7 +105,7 @@ function ClientCalendar() {
 
     await axios
       .get(
-        "http://localhost:8080/entity/getEntityAvailabilityPeriods",
+        `${ServerName}entity/getEntityAvailabilityPeriods`,
         requestOptions
       )
       .then((res) => {

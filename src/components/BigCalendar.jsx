@@ -46,7 +46,7 @@ export default function BigCalendar() {
 
     axios
       .get(
-        "http://localhost:8080/reservation/getEntityReservations",
+        `${ServerName}reservation/getEntityReservations`,
         requestOptions
       )
       .then((res) => {
@@ -78,7 +78,7 @@ export default function BigCalendar() {
 
     axios
       .get(
-        "http://localhost:8080/entity/getEntityAvailabilityPeriods",
+        `${ServerName}entity/getEntityAvailabilityPeriods`,
         requestOptions
       )
       .then((res) => {
@@ -119,7 +119,7 @@ export default function BigCalendar() {
     };
 
     axios
-      .get("http://localhost:8080/promo/getEntityPromos", requestOptions)
+      .get(`${ServerName}promo/getEntityPromos`, requestOptions)
       .then((res) => {
         let events = [];
         res.data.forEach((element) => {

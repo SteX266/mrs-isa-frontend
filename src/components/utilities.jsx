@@ -1,8 +1,9 @@
 import axios from "axios";
+import ServerName from "../ServerName";
 
 export function useGet(path, data) {
   const token = JSON.parse(localStorage.getItem("userToken"));
-  const url = "http://localhost:8080/" + path;
+  const url = `${ServerName}` + path;
   const requestOptions = {
     headers: {
       Accept: "application/json",
@@ -24,7 +25,7 @@ export function useGet(path, data) {
 }
 export function useFetch(path, data) {
   const token = JSON.parse(localStorage.getItem("userToken"));
-  const url = "http://localhost:8080/" + path;
+  const url = `${ServerName}` + path;
   const requestOptions = {
     method: "POST",
     headers: {
@@ -48,7 +49,7 @@ export function useFetch(path, data) {
 export function usePost(path, data) {
   const token = JSON.parse(localStorage.getItem("userToken"));
   console.log(token);
-  const url = "http://localhost:8080/" + path;
+  const url = `${ServerName}` + path;
   const requestOptions = {
     headers: {
       Accept: "application/json",
@@ -70,7 +71,7 @@ export function usePost(path, data) {
 
 export function useDelete(path, data) {
   const token = JSON.parse(localStorage.getItem("userToken"));
-  const url = "http://localhost:8080/" + path;
+  const url = `${ServerName}` + path;
   const requestOptions = {
     headers: {
       Accept: "application/json",
