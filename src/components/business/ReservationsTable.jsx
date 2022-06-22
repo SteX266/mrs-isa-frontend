@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Container, Navbar, Table, Form, FormControl, Button } from 'react-bootstrap';
 import BussinessComplaintDialog from "../modals/BussinessComplaintDialog"
+import ServerName from '../../ServerName';
 
 export default function ReservationTable() {
     const [upcomingReservations, setUpcomingReservations] = useState([]);
@@ -25,7 +26,7 @@ export default function ReservationTable() {
             }
         };
 
-        axios.get("http://localhost:8080/reservation/getOwnerReservations", requestOptions)
+        axios.get(`${ServerName}reservation/getOwnerReservations`, requestOptions)
       .then((res) => {
 
         let future = [];
@@ -155,7 +156,7 @@ function Reservation(props) {
             }
         };
 
-        axios.get("http://localhost:8080/reservation/cancelReservation", requestOptions)
+        axios.get(`${ServerName}reservation/cancelReservation`, requestOptions)
     }
     function getButton() {
         if(reservation.status == "APPROVED") {

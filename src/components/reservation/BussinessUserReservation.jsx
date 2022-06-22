@@ -8,6 +8,7 @@ import BigCalendar from "../BigCalendar";
 import ReservationDialog from "../modals/ReservationDialog";
 import toast from "react-hot-toast";
 import { Form } from "react-bootstrap";
+import ServerName from "../../ServerName";
 
 export default function BussinessUserReservation() {
   const params = useParams();
@@ -40,7 +41,7 @@ export default function BussinessUserReservation() {
 
     axios
       .post(
-        "http://localhost:8080/reservation/makeReservationForClient",
+        `${ServerName}reservation/makeReservationForClient`,
         {
           dateFrom: startDate,
           dateTo: endDate,
@@ -76,7 +77,7 @@ export default function BussinessUserReservation() {
 
     await axios
       .get(
-        "http://localhost:8080/reservation/getEntityReservations",
+        `${ServerName}reservation/getEntityReservations`,
         requestOptions
       )
       .then((res) => {
@@ -111,7 +112,7 @@ export default function BussinessUserReservation() {
 
     await axios
       .get(
-        "http://localhost:8080/entity/getEntityAvailabilityPeriods",
+        `${ServerName}entity/getEntityAvailabilityPeriods`,
         requestOptions
       )
       .then((res) => {

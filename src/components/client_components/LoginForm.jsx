@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 function LoginForm() {
   const [errors, setErrors] = useState({ email: "", password: "" });
@@ -24,7 +25,7 @@ function LoginForm() {
           password,
         }),
       };
-      fetch("http://localhost:8080/auth/login", requestOptions).then(
+      fetch(`${ServerName}auth/login`, requestOptions).then(
         async (response) => {
           const data = await response.json();
           if (!response.ok) {

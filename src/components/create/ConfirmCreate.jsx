@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Button, Card, Stack } from "react-bootstrap";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 const paths = {
   adventure: "/instructor/services",
   vessel: "/captain/services",
@@ -12,10 +13,10 @@ export default function ConfirmCreate({ serviceDTO, back, type }) {
   function createVessel() {
     const token = JSON.parse(localStorage.getItem("userToken"));
     let data;
-    let url = "http://localhost:8080/entity/createVessel";
+    let url = `${ServerName}entity/createVessel`;
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/createAdventure";
+        url = `${ServerName}entity/createAdventure`;
         data = {
           name: serviceDTO.general.name,
           cancellationFee: serviceDTO.general.cancellationFee,
@@ -34,7 +35,7 @@ export default function ConfirmCreate({ serviceDTO, back, type }) {
         };
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/createVessel";
+        url = `${ServerName}entity/createVessel`;
         data = {
           name: serviceDTO.general.name,
           cancellationFee: serviceDTO.general.cancellationFee,
@@ -58,7 +59,7 @@ export default function ConfirmCreate({ serviceDTO, back, type }) {
         };
         break;
       case "listing":
-        url = "http://localhost:8080/entity/createListing";
+        url = `${ServerName}entity/createListing`;
         data = {
           name: serviceDTO.general.name,
           cancellationFee: serviceDTO.general.cancellationFee,

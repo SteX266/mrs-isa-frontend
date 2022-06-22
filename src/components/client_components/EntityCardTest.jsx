@@ -2,6 +2,7 @@ import "../../style/EntityCardTest.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ServerName from "../../ServerName";
 
 export default function EntityCardTest(props) {
   const [photo, setPhoto] = useState("");
@@ -14,7 +15,7 @@ export default function EntityCardTest(props) {
     let ext = props.image.split(".");
 
     let result = await axios
-      .get("http://localhost:8080/auth/getImage/" + props.image, {
+      .get(`${ServerName}auth/getImage/` + props.image, {
         responseType: "blob",
         params: { extension: ext[1] },
       })

@@ -3,6 +3,7 @@ import { Container, Navbar, Form, FormControl } from "react-bootstrap";
 import axios from "axios";
 import ReviewTable from "./ReviewTable";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function ReviwRequest() {
   const [requests, setRequests] = React.useState([]);
@@ -19,7 +20,7 @@ export default function ReviwRequest() {
       headers: { Authorization: "Bearer " + token.accessToken },
     };
     axios
-      .get("http://localhost:8080/review/getAllReviws", requestOptions)
+      .get(`${ServerName}review/getAllReviws`, requestOptions)
       .then((res) => {
         console.log(res.data);
         setRequests(res.data);
@@ -37,7 +38,7 @@ export default function ReviwRequest() {
 
     axios
       .post(
-        "http://localhost:8080/review/acceptReviw",
+        `${ServerName}review/acceptReview`,
         {
           client: report.client,
           owner: report.owner,
@@ -70,7 +71,7 @@ export default function ReviwRequest() {
 
     axios
       .post(
-        "http://localhost:8080/review/declineReviw",
+        `${ServerName}review/declineReviw`,
         { id: client },
         { headers }
       )

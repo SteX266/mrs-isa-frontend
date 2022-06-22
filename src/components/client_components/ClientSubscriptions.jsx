@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import EntityCardTest from "./EntityCardTest";
+import ServerName from "../../ServerName";
 
 export default function ClientSubscriptions() {
   const [allEntities, setAllEntities] = useState([]);
@@ -23,7 +24,7 @@ export default function ClientSubscriptions() {
       },
     };
     axios
-      .get("http://localhost:8080/user/getClientSubscriptions", requestOptions)
+      .get(`${ServerName}user/getClientSubscriptions`, requestOptions)
       .then((res) => {
         setAllEntities(res.data);
       });

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Container, Form, Navbar, Stack } from "react-bootstrap";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function EditAddress({ serviceID, type }) {
   const [address, setAddress] = useState({
@@ -12,16 +13,16 @@ export default function EditAddress({ serviceID, type }) {
   });
   function getAddressByID() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/entity/getDetailAdventure";
+    let url = `${ServerName}entity/getDetailAdventure`;
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/getDetailAdventure";
+        url = `${ServerName}entity/getDetailAdventure`;
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/getDetailVessel";
+        url = `${ServerName}entity/getDetailVessel`;
         break;
       case "listing":
-        url = "http://localhost:8080/entity/getDetailVacation";
+        url = `${ServerName}entity/getDetailVacation`;
         break;
       default:
         break;
@@ -59,7 +60,7 @@ export default function EditAddress({ serviceID, type }) {
     const token = JSON.parse(localStorage.getItem("userToken"));
     const data = address;
     data["serviceID"] = serviceID;
-    const url = "http://localhost:8080/entity/editAddress";
+    const url = `${ServerName}entity/editAddress`;
     const requestOptions = {
       headers: {
         Accept: "application/json",

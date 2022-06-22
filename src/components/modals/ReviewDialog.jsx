@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { MDBInput } from "mdbreact";
 import axios from "axios";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 
 
@@ -60,7 +61,7 @@ export default function ReviewDialog({showModal,reservationId, confirmed, cancel
     };
 
     axios.get(
-      "http://localhost:8080/review/createReview",
+      `${ServerName}review/createReview`,
       requestOptions
     ).then(async result=>{
       if(result.data =="OK"){

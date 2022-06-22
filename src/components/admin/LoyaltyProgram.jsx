@@ -2,6 +2,7 @@ import Dialog from "../modals/Dialog";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../style/Errors.css";
+import ServerName from "../../ServerName";
 export default function LoyaltyProgram() {
   const [showEditDialog, setShowEditDialog] = useState(false);
   const [errors, setErrors] = useState({
@@ -46,7 +47,7 @@ export default function LoyaltyProgram() {
           platinumDiscount: platinumDiscount,
         },
       };
-      axios.get("http://localhost:8080/loyalty/editLoyalty", requestOptions);
+      axios.get(`${ServerName}loyalty/editLoyalty`, requestOptions);
       console.log("Podaci uspesno izmenjeni!");
     } else {
       console.log("Invalid Form");
@@ -162,7 +163,7 @@ export default function LoyaltyProgram() {
       headers: { Authorization: "Bearer " + token.accessToken },
     };
     axios
-      .get("http://localhost:8080/loyalty/getLoyalty", requestOptions)
+      .get(`${ServerName}loyalty/getLoyalty`, requestOptions)
       .then((res) => {
         setPointsPerReservation(res.data.pointsPerReservation);
         setPointsForBusiness(res.data.pointsForBusiness);

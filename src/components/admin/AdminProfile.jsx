@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../style/Errors.css";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 
 function AdminProfile() {
@@ -39,7 +40,7 @@ function AdminProfile() {
           addressLine: addressLine,
         },
       };
-      axios.get("http://localhost:8080/user/editUserData", requestOptions);
+      axios.get(`${ServerName}user/editUserData`, requestOptions);
       toast.success("Profile changed successfully!");
     } else {
       toast.error("Form is not valid!");
@@ -61,7 +62,7 @@ function AdminProfile() {
     };
 
     axios.get(
-      "http://localhost:8080/cancellationRequest/createCancellationRequest",
+      `${ServerName}cancellationRequest/createCancellationRequest`,
       requestOptions
     );
     setShowTaskDialog(false);
@@ -142,7 +143,7 @@ function AdminProfile() {
       params: { username: localStorage.getItem("username") },
     };
     axios
-      .get("http://localhost:8080/user/getUserByUsername", requestOptions)
+      .get(`${ServerName}user/getUserByUsername`, requestOptions)
       .then((res) => {
         setName(res.data.name);
         setSurname(res.data.surname);

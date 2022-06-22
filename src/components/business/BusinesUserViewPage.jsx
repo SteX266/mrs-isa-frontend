@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import BusinessUserEntityList from "./BusinessUserEntityList";
 import BussinessSearchBar from "./BussinessSearchBar";
+import ServerName from "../../ServerName";
 
 export default function BusinessUserViewServicesPage(props) {
   const [user, setUser] = React.useState({ type: "" });
@@ -59,7 +60,7 @@ export default function BusinessUserViewServicesPage(props) {
   function getServiceData() {
     const token = JSON.parse(localStorage.getItem("userToken"));
 
-    let path = "http://localhost:8080/entity/getCurrentUserEntities";
+    let path = `${ServerName}entity/getCurrentUserEntities`;
     axios
       .get(path, {
         headers: {
@@ -86,7 +87,7 @@ export default function BusinessUserViewServicesPage(props) {
     console.log(searchFilters);
 
     axios
-      .post("http://localhost:8080/entity/getFilteredEntities", searchFilters, {
+      .post(`${ServerName}entity/getFilteredEntities`, searchFilters, {
         headers,
       })
       .then((res) => {

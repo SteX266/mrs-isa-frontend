@@ -13,6 +13,7 @@ import {
 import DatePicker from "react-datepicker";
 import { useParams } from "react-router";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function BussinessPromoPage() {
   const [promos, setPromos] = useState([]);
@@ -34,7 +35,7 @@ export default function BussinessPromoPage() {
   }
   function deleteByID(id) {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = `http://localhost:8080/promo/delete/${id}`;
+    let url = `${ServerName}promo/delete/${id}`;
     const requestOptions = {
       headers: {
         Accept: "application/json",
@@ -54,7 +55,7 @@ export default function BussinessPromoPage() {
   }
   function getPromosByID() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/promo/getEntityPromos";
+    let url = `${ServerName}promo/getEntityPromos`;
     let data;
     const requestOptions = {
       headers: {
@@ -117,7 +118,7 @@ export default function BussinessPromoPage() {
 
   function create() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/promo/create";
+    let url = `${ServerName}promo/create`;
     const requestOptions = {
       headers: {
         Accept: "application/json",

@@ -4,6 +4,7 @@ import axios from "axios";
 import RegistrationRequestTable from "./RegistrationRequestTable";
 import AccountCancellationResponseDialog from "../modals/AccountCancellationResponseDialog";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function RegistrationRequest() {
   const [requests, setRequests] = React.useState([]);
@@ -25,7 +26,7 @@ export default function RegistrationRequest() {
     };
     axios
       .get(
-        "http://localhost:8080/cancellationRequest/getCancellationRequest",
+        `${ServerName}cancellationRequest/getCancellationRequest`,
         requestOptions
       )
       .then((res) => {
@@ -45,7 +46,7 @@ export default function RegistrationRequest() {
 
     await axios
       .post(
-        "http://localhost:8080/cancellationRequest/acceptCancellationRequest",
+        `${ServerName}cancellationRequest/acceptCancellationRequest`,
         { client: client },
         { headers }
       )

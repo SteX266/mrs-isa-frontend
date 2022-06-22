@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import EntityList from "../client_components/EntityList";
 import ChangePasswordPage from "../business/ChangePasswordPage";
+import ServerName from "../../ServerName";
 
 export default function HomePageAdmin() {
   const [isActive, setIsActive] = React.useState(false);
@@ -17,7 +18,7 @@ export default function HomePageAdmin() {
       headers: { Authorization: "Bearer " + token.accessToken },
     };
     await axios
-      .get("http://localhost:8080/user/isAdminActive", requestOptions)
+      .get(`${ServerName}user/isAdminActive`, requestOptions)
       .then((res) => {
         if (res.data == 1) {
           setIsActive(<EntityList type="ALL_ENTITIES" userType="admin" />);

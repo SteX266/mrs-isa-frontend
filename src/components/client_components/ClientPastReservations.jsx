@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import ComplaintDialog from "../modals/ComplaintDialog";
 import ReviewDialog from "../modals/ReviewDialog";
+import ServerName from "../../ServerName";
 
 export default function ClientReservationsTable(props) {
   const [sortedByPrice, setSortedByPrice] = useState(false);
@@ -51,7 +52,7 @@ export default function ClientReservationsTable(props) {
 
     axios
       .get(
-        "http://localhost:8080/reservation/getClientReservations",
+        `${ServerName}reservation/getClientReservations`,
         requestOptions
       )
       .then((res) => {

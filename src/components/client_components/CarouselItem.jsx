@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ServerName from "../../ServerName";
 
 export default function CarouselItem(props) {
   const [photo, setPhoto] = useState("");
   useEffect(() => {
     let ext = props.photo.split(".");
     axios
-      .get("http://localhost:8080/auth/getImage/" + props.photo, {
+      .get(`${ServerName}auth/getImage/` + props.photo, {
         responseType: "blob",
         params: { extension: ext[1] },
       })

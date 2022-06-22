@@ -10,6 +10,7 @@ import {
   Table,
 } from "react-bootstrap";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 function EditAmenities({ serviceID, type }) {
   const [amenities, setAmenities] = useState([]);
@@ -20,16 +21,16 @@ function EditAmenities({ serviceID, type }) {
 
   function getAmenitiesByID() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/entity/getDetailAdventure";
+    let url = `${ServerName}entity/getDetailAdventure`;
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/getDetailAdventure";
+        url = `${ServerName}entity/getDetailAdventure`;
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/getDetailVessel";
+        url = `${ServerName}entity/getDetailVessel`;
         break;
       case "listing":
-        url = "http://localhost:8080/entity/getDetailVacation";
+        url = `${ServerName}entity/getDetailVacation`;
         break;
       default:
         break;
@@ -53,16 +54,16 @@ function EditAmenities({ serviceID, type }) {
   }
   function getShowAmenities() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/entity/getAdventureUtilities";
+    let url = `${ServerName}entity/getAdventureUtilities`;
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/getAdventureUtilities";
+        url = `${ServerName}entity/getAdventureUtilities`;
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/getVesselUtilities";
+        url = `${ServerName}entity/getVesselUtilities`;
         break;
       case "listing":
-        url = "http://localhost:8080/entity/getListingUtilities";
+        url = `${ServerName}entity/getListingUtilities`;
         break;
       default:
         break;
@@ -151,7 +152,7 @@ function EditAmenities({ serviceID, type }) {
   function saveChanges() {
     const token = JSON.parse(localStorage.getItem("userToken"));
     const data = { amenityList: amenities, serviceID: serviceID };
-    const url = "http://localhost:8080/entity/editAmenities";
+    const url = `${ServerName}entity/editAmenities`;
     const requestOptions = {
       headers: {
         Accept: "application/json",

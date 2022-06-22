@@ -4,6 +4,7 @@ import axios from "axios";
 import RegistrationRequestTable from "./RegistrationRequestTable";
 import RegistrationRequestDialog from "../modals/RegistrationRequestDialog";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function RegistrationRequest() {
   const [requests, setRequests] = React.useState([]);
@@ -25,7 +26,7 @@ export default function RegistrationRequest() {
     };
     axios
       .get(
-        "http://localhost:8080/registrationRequest/getAllRegistrationRequests",
+        `${ServerName}registrationRequest/getAllRegistrationRequests`,
         requestOptions
       )
       .then((res) => {
@@ -45,7 +46,7 @@ export default function RegistrationRequest() {
 
     axios
       .post(
-        "http://localhost:8080/registrationRequest/acceptRegistrationRequest",
+        `${ServerName}registrationRequest/acceptRegistrationRequest`,
         { client: client },
         { headers }
       )

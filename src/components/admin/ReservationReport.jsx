@@ -4,6 +4,7 @@ import axios from "axios";
 import ReservationReportTable from "./ReservationReportTable";
 import SanctionReportDialog from "../modals/SanctionReportDialog";
 import DeclineReportDialog from "../modals/DeclineReportDialog";
+import ServerName from "../../ServerName";
 
 export default function ReservationReport() {
   const [requests, setRequests] = React.useState([]);
@@ -26,7 +27,7 @@ export default function ReservationReport() {
     };
     axios
       .get(
-        "http://localhost:8080/reservationReport/getAllReservationReports",
+        `${ServerName}reservationReport/getAllReservationReports`,
         requestOptions
       )
       .then((res) => {

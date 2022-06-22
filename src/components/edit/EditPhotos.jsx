@@ -10,6 +10,7 @@ import {
   Navbar,
   Stack,
 } from "react-bootstrap";
+import ServerName from "../../ServerName";
 
 function EditPhotos({ serviceID, type }) {
   const [photos, setPhotos] = useState([]);
@@ -39,16 +40,16 @@ function EditPhotos({ serviceID, type }) {
   }
   function getPhotosByID() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/entity/getDetailAdventure";
+    let url = `${ServerName}entity/getDetailAdventure`;
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/getDetailAdventure";
+        url = `${ServerName}entity/getDetailAdventure`;
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/getDetailVessel";
+        url = `${ServerName}entity/getDetailVessel`;
         break;
       case "listing":
-        url = "http://localhost:8080/entity/getDetailVacation";
+        url = `${ServerName}entity/getDetailVacation`;
         break;
       default:
         break;

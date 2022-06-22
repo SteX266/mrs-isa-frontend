@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import EntityCardTest from "../client_components/EntityCardTest";
 import { Container } from "react-bootstrap";
+import ServerName from "../../ServerName";
 
 function RatingsReport({ type, userType }) {
   const [averageRating, setAverageRating] = useState(0);
@@ -36,7 +37,7 @@ function RatingsReport({ type, userType }) {
 
   function getAverageRating() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    const path = "http://localhost:8080/entity/getAverageRating";
+    const path = `${ServerName}entity/getAverageRating`;
     let rating;
     const requestOptions = {
       headers: {
@@ -52,7 +53,7 @@ function RatingsReport({ type, userType }) {
   }
   function getBestVacation() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    const path = "http://localhost:8080/entity/getBestRated";
+    const path = `${ServerName}entity/getBestRated`;
     let data;
     const requestOptions = {
       headers: {
@@ -90,7 +91,7 @@ function RatingsReport({ type, userType }) {
   }
   function getWorstVacation() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    const path = "http://localhost:8080/entity/getWorstRated";
+    const path = `${ServerName}entity/getWorstRated`;
     let data;
     const requestOptions = {
       headers: {

@@ -8,6 +8,7 @@ import Dialog from "../modals/Dialog";
 import Map from "./Map";
 import { Table, Button, Modal, Stack } from "react-bootstrap";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function ListingProfilePage(props) {
   const params = useParams();
@@ -63,7 +64,7 @@ export default function ListingProfilePage(props) {
     };
 
     axios
-      .get("http://localhost:8080/entity/getEntityById", requestOptions)
+      .get(`${ServerName}entity/getEntityById`, requestOptions)
       .then((res) => {
         setListing(res.data);
         setListing({
@@ -100,7 +101,7 @@ export default function ListingProfilePage(props) {
   function getFirstPhoto(first) {
     let ext = first.split(".");
     axios
-      .get("http://localhost:8080/auth/getImage/" + first, {
+      .get(`${ServerName}auth/getImage/` + first, {
         responseType: "blob",
         params: { extension: ext[1] },
       })
@@ -120,7 +121,7 @@ export default function ListingProfilePage(props) {
       params: { entityId: params.id, username: username },
     };
     axios
-      .get("http://localhost:8080/user/getSubscribeState", requestOptions)
+      .get(`${ServerName}user/getSubscribeState`, requestOptions)
       .then((res) => {
         if (res.data) {
           setButton(
@@ -153,7 +154,7 @@ export default function ListingProfilePage(props) {
       params: { id: params.id },
     };
     axios
-      .get("http://localhost:8080/promo/getEntityPromos", requestOptions)
+      .get(`${ServerName}promo/getEntityPromos`, requestOptions)
       .then((res) => {
         setPromos(res.data);
       });
@@ -167,7 +168,7 @@ export default function ListingProfilePage(props) {
       params: { entityId: params.id, username: username },
     };
     axios.get(
-      "http://localhost:8080/entity/createSubscription",
+      `${ServerName}entity/createSubscription`,
       requestOptions
     );
 
@@ -189,7 +190,7 @@ export default function ListingProfilePage(props) {
       headers: { Authorization: "Bearer " + token.accessToken },
       params: { entityId: params.id, username: username },
     };
-    axios.get("http://localhost:8080/entity/unsubscribe", requestOptions);
+    axios.get(`${ServerName}entity/unsubscribe`, requestOptions);
 
     setButton(
       <button
@@ -214,16 +215,16 @@ export default function ListingProfilePage(props) {
       headers: { Authorization: "Bearer " + token.accessToken },
       params: { id: listing.id },
     };
-    let path = "http://localhost:8080/entity/deleteVessel";
+    let path = `${ServerName}entity/deleteVessel`;
     switch (listing.type) {
       case "vessel":
-        path = "http://localhost:8080/entity/deleteVessel";
+        path = `${ServerName}entity/deleteVessel`;
         break;
       case "listing":
-        path = "http://localhost:8080/entity/deleteListing";
+        path = `${ServerName}entity/deleteListing`;
         break;
       case "adventure":
-        path = "http://localhost:8080/entity/deleteAdventure";
+        path = `${ServerName}entity/deleteAdventure`;
         break;
       default:
         break;
@@ -514,7 +515,7 @@ function Promo(props) {
     };
     axios
       .get(
-        "http://localhost:8080/reservation/createPromoReservation",
+        `${ServerName}reservation/createPromoReservation`,
         requestOptions
       )
       .then((res) => {

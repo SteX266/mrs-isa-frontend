@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RegistrationDialog from "../modals/RegistrationDialog";
 import "../../style/Errors.css";
-
+import ServerName from "../../ServerName";
 function RegisterForm() {
   const [errors, setErrors] = useState({
     name: "",
@@ -56,7 +56,7 @@ function RegisterForm() {
       }),
     };
 
-    fetch("http://localhost:8080/auth/usersignup", requestOptions).then(
+    fetch(`${ServerName}auth/usersignup`, requestOptions).then(
       async (response) => {
         const data = await response.json();
 

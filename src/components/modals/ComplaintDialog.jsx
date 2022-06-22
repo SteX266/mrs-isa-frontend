@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { MDBInput } from "mdbreact";
 import axios from "axios";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 
 
@@ -28,7 +29,7 @@ export default function ComplaintDialog({showModal,reservationId, confirmed, can
 
 
     axios.post(
-      "http://localhost:8080/complaint/createComplaint",
+      `${ServerName}complaint/createComplaint`,
       {reservationId:reservationId,
         text:text
       },

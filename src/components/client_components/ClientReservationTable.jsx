@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Dialog from "../modals/Dialog";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 import {
   Container,
@@ -53,7 +54,7 @@ export default function ClientReservationsTable(props) {
 
     axios
       .get(
-        "http://localhost:8080/reservation/getClientReservations",
+        `${ServerName}reservation/getClientReservations`,
         requestOptions
       )
       .then((res) => {
@@ -344,7 +345,7 @@ export default function ClientReservationsTable(props) {
 
       axios
         .get(
-          "http://localhost:8080/reservation/cancelReservation",
+          `${ServerName}reservation/cancelReservation`,
           requestOptions
         )
         .catch(() => {

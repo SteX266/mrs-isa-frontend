@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Container, Stack, Navbar, Dropdown } from "react-bootstrap";
+import ServerName from "../../ServerName";
 
 export default function Utilities({ type, amenitiesDTO, save, next, back }) {
   const [selected, setSelected] = useState(amenitiesDTO);
@@ -9,16 +10,16 @@ export default function Utilities({ type, amenitiesDTO, save, next, back }) {
   const [showUtilities, setShowUtilities] = useState([]);
   function getUtilitiesByType() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/entity/getAdventureUtilities";
+    let url = `${ServerName}entity/getAdventureUtilities`;
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/getAdventureUtilities";
+        url = `${ServerName}entity/getAdventureUtilities`;
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/getVesselUtilities";
+        url = `${ServerName}entity/getVesselUtilities`;
         break;
       case "listing":
-        url = "http://localhost:8080/entity/getListingUtilities";
+        url = `${ServerName}entity/getListingUtilities`;
         break;
       default:
         break;

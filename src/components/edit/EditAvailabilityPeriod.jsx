@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Container, Navbar, Stack, Table } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function EditAvailabilityPeriod({ serviceID, type }) {
   const [availabilityPeriod, setAvailabilityPeriod] = useState([]);
@@ -14,16 +15,16 @@ export default function EditAvailabilityPeriod({ serviceID, type }) {
 
   function getPeriodByID() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/entity/getDetailAdventure";
+    let url = `${ServerName}entity/getDetailAdventure`;
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/getDetailAdventure";
+        url = `${ServerName}entity/getDetailAdventure`;
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/getDetailVessel";
+        url = `${ServerName}entity/getDetailVessel`;
         break;
       case "listing":
-        url = "http://localhost:8080/entity/getDetailVacation";
+        url = `${ServerName}entity/getDetailVacation`;
         break;
       default:
         break;
@@ -109,7 +110,7 @@ export default function EditAvailabilityPeriod({ serviceID, type }) {
       availabilityPeriodDTOS: availabilityPeriod,
       serviceID: serviceID,
     };
-    const url = "http://localhost:8080/entity/editAvailabilityPeriod";
+    const url = `${ServerName}entity/editAvailabilityPeriod`;
     const requestOptions = {
       headers: {
         Accept: "application/json",

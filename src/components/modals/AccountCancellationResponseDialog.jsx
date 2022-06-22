@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { MDBInput } from "mdbreact";
 import axios from "axios";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function AccountCancelationDialog({
   showModal,
@@ -28,7 +29,7 @@ export default function AccountCancelationDialog({
 
     await axios
       .post(
-        "http://localhost:8080/cancellationRequest/declineCancellationRequest",
+        `${ServerName}cancellationRequest/declineCancellationRequest`,
         { client: client, text: text },
         { headers }
       )

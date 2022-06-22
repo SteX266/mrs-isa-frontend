@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { Button, Container } from "react-bootstrap";
 import DatePicker from "react-datepicker";
+import ServerName from "../../ServerName";
+
 import {
   BarChart,
   Bar,
@@ -54,7 +56,7 @@ export default function RevenueReport() {
   useEffect(() => {}, []);
   function getData() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let path = "http://localhost:8080/entity/getRevenueReportData";
+    let path = `${ServerName}entity/getRevenueReportData`;
     let values;
 
     const requestOptions = {

@@ -3,6 +3,7 @@ import { Container, Navbar, Form, FormControl } from "react-bootstrap";
 import axios from "axios";
 import ClientComplaintTable from "./ClientComplaintTable";
 import ClientComplaintDialog from "../modals/ClientComplaintDialog";
+import ServerName from "../../ServerName";
 
 export default function ClientComplaint() {
   const [requests, setRequests] = React.useState([]);
@@ -24,7 +25,7 @@ export default function ClientComplaint() {
       headers: { Authorization: "Bearer " + token.accessToken },
     };
     axios
-      .get("http://localhost:8080/complaint/getAllComplaints", requestOptions)
+      .get(`${ServerName}complaint/getAllComplaints`, requestOptions)
       .then((res) => {
         console.log(res.data);
         setRequests(res.data);

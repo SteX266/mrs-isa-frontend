@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { Container, Form } from "react-bootstrap";
+import ServerName from "../../ServerName";
 import {
   BarChart,
   Bar,
@@ -47,16 +48,16 @@ export default function AttendanceReport() {
 
   function getData() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let path = "http://localhost:8080/entity/getReservationsAmountMonthly";
+    let path = `${ServerName}entity/getReservationsAmountMonthly`;
     switch (type) {
       case "month":
-        path = "http://localhost:8080/entity/getReservationsAmountMonthly";
+        path = `${ServerName}entity/getReservationsAmountMonthly`;
         break;
       case "year":
-        path = "http://localhost:8080/entity/getReservationsAmountYearly";
+        path = `${ServerName}entity/getReservationsAmountYearly`;
         break;
       case "week":
-        path = "http://localhost:8080/entity/getReservationsAmountWeekly";
+        path = `${ServerName}entity/getReservationsAmountWeekly`;
         break;
 
       default:

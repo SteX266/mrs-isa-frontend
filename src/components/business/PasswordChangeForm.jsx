@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function PasswordChangeForm() {
   let navigate = useNavigate();
@@ -34,7 +35,7 @@ export default function PasswordChangeForm() {
       },
     };
     axios
-      .get("http://localhost:8080/user/change-password", requestOptions)
+      .get(`${ServerName}user/change-password`, requestOptions)
       .then((res) => {
         if (res.data == 1) {
           toast.success("Password successfully changed.Pleas login again");

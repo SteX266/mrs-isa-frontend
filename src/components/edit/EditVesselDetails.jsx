@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Container, Form, Navbar, Stack } from "react-bootstrap";
 import toast from "react-hot-toast";
+import ServerName from "../../ServerName";
 
 export default function EditVesselDetails({ serviceID, type }) {
   const [details, setDetails] = useState({
@@ -11,19 +12,19 @@ export default function EditVesselDetails({ serviceID, type }) {
   });
   function getDetailsByID() {
     const token = JSON.parse(localStorage.getItem("userToken"));
-    let url = "http://localhost:8080/entity/getDetailAdventure";
+    let url = `${ServerName}entity/getDetailAdventure`;
     console.log(type);
     switch (type) {
       case "adventure":
-        url = "http://localhost:8080/entity/getDetailAdventure";
+        url = `${ServerName}entity/getDetailAdventure`;
         console.log("NESTO");
         break;
       case "vessel":
-        url = "http://localhost:8080/entity/getDetailVessel";
+        url = `${ServerName}entity/getDetailVessel`;
         console.log("NESTO");
         break;
       case "listing":
-        url = "http://localhost:8080/entity/getDetailVacation";
+        url = `${ServerName}entity/getDetailVacation`;
         break;
       default:
         break;
@@ -59,7 +60,7 @@ export default function EditVesselDetails({ serviceID, type }) {
     const token = JSON.parse(localStorage.getItem("userToken"));
     const data = details;
     data["serviceID"] = serviceID;
-    const url = "http://localhost:8080/entity/editVesselDetails";
+    const url = `${ServerName}entity/editVesselDetails`;
     const requestOptions = {
       headers: {
         Accept: "application/json",
