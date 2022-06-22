@@ -4,11 +4,11 @@ import { MDBCol } from "mdbreact";
 import Pagination from "./Pagination";
 import EntityCardTest from "./EntityCardTest";
 import ClientSearchBar from "../business/ClientSearchBar";
+import ServerName from "../../ServerName";
 
 function EntityList(props) {
   const [currentEntities, setCurrentEntities] = useState([]);
   const postsPerPage = 6;
-
   const [indexOfLastPost, setIndexOfLastPost] = useState(1 * postsPerPage);
   const [indexOfFirstPost, setIndexOfFirstPost] = useState(1);
 
@@ -77,7 +77,7 @@ function EntityList(props) {
     };
 
     let res = await axios.post(
-      "https://mrs-isa-backend.herokuapp.com/auth/getFilteredEntities",
+      `${ServerName}auth/getFilteredEntities`,
       {
         rentalFeeFrom: currentFilters.rentalFeeFrom,
         rentalFeeTo: currentFilters.rentalFeeTo,
