@@ -1,0 +1,46 @@
+.lokacija {
+  color: rgb(53, 105, 105);
+  font-size: 0.8rem;
+}
+
+.card .ocena {
+  color: rgb(72, 185, 27);
+  font-size: 1.5rem;
+}
+
+.card .delete {
+  color: rgb(182, 20, 20);
+  font-size: 1.5rem;
+}
+
+.entityCard {
+  background-color: rgb(235, 254, 255);
+  margin-bottom: 1rem;
+}
+
+.entityCard .card-title {
+  font-size: 2rem;
+  color: rgb(51, 51, 51);
+}
+
+.entityCard .card-text {
+  font-size: 1rem;
+  color: rgb(105, 105, 105);
+  margin-top: 1rem;
+}
+
+.entityCard img {
+  height: 200px;
+  margin: 0.5rem;
+}
+
+.iconica {
+  margin-right: 1rem;
+  color: rgb(51, 51, 51);
+  height: 1rem;
+}
+
+.entityCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.06);
+}
